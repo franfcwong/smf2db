@@ -1,7 +1,8 @@
-# Smf2db
+# smf2db
 
+![Pypi](https://img.shields.io/badge/Pypi-0.1.0-blue)
 ![coverage](https://img.shields.io/badge/coverage-93%25-yellowgreen)
-![version](https://img.shields.io/badge/version-0.1.0-blue)
+[![Documentation Status](https://readthedocs.org/projects/smf2db/badge/?version=latest)](https://smf2db.readthedocs.io)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 This is a CLI application that does upload SMF JSON files to database, summarization and printing reports on the fly without any DBMS.
@@ -44,7 +45,7 @@ If installing from wheel file, you can run this:
 python -m pip install smf2db-0.1.0-py3-none-any.whl
 ```
 
-For more detail instructions, please refer to the project's official [documentation](https://docs.readthedocs.com/dev/stable/tests.html).
+For more detail instructions, please refer to the project's official [documentation](https://smf2db.readthedocs.io).
 
 ### On macOS, Linux and Windows:
 **smf2db** can be installed with [pip](htps://pip.pypa.io/len/stable/) like this:

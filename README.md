@@ -142,4 +142,4 @@ If you want to contact me you can reach me at <franfwong@hotmail.com>.
 
 ## License
 
-**smf2db** is distributed under the < license > license. See [`LICENSE`](LICENSE.md) for more details.
+This project uses the following license: [`LICENSE`](LICENSE.md).

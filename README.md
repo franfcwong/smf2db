@@ -1,6 +1,6 @@
 # smf2db
 
-![Pypi](https://img.shields.io/badge/Pypi-0.1.0-blue)
+[![Pypi version](https://badgen.net/pypi/v/smf2db)](https://pypi.org/project/smf2db/)
 ![coverage](https://img.shields.io/badge/coverage-93%25-yellowgreen)
 [![Documentation Status](https://readthedocs.org/projects/smf2db/badge/?version=latest)](https://smf2db.readthedocs.io)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
@@ -42,7 +42,7 @@ Ensure you download the wheel file and upload to USS before beginning. The requi
 
 If installing from wheel file, you can run this:
 ```
-python -m pip install smf2db-0.1.0-py3-none-any.whl
+python -m pip install smf2db-0.1.1-py3-none-any.whl
 ```
 
 For more detail instructions, please refer to the project's official [documentation](https://smf2db.readthedocs.io).
@@ -140,6 +140,8 @@ If you want to contact me you can reach me at <franfcwong@hotmail.com>.
 
 - 0.1.0
     - The first proper release
+- 0.1.1
+    - Correct the typo in the contact.
 
 ## License
 

@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "smf2db"
-version = "0.1.0"
+version = "0.1.1"
 requires-python = ">= 3.11"
 keywords = ["SMF", "z/OS"]
 description = "A CLI application that does upload SMF JSON files to database, summarization and printing reports on the fly without any DBMS."

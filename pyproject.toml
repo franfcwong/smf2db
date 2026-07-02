@@ -39,6 +39,7 @@ psycopg2 = ["psycopg2>=2.9"]
 
 [project.urls]
 Homepage = "https://github.com/franfcwong/smf2db"
+Documentation = 'https://smf2db.readthedocs.io'
 
 [project.scripts]
 smf2db = "smf2db.__main__:cli"

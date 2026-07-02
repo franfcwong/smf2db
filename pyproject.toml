@@ -1,0 +1,47 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=73.0.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smf2db"
+version = "0.1.0"
+requires-python = ">= 3.11"
+keywords = ["SMF", "z/OS"]
+description = "A CLI application that does upload SMF JSON files to database, summarization and printing reports on the fly without any DBMS."
+readme = "README.md"
+authors = [{name = "Fran Wong", email = "franfcwong@hotmail.com"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "click >= 8.1.3",
+    "numpy>=1.23.4",
+    "pandas>=1.5.1",
+    "SQLAlchemy>=2.0.12",
+    "rich>=14.3.2",
+    "tabulate==0.9.0",
+    "pyyaml>=6.0.3",
+    "jsonschema>=4.17.3",
+    "packaging>=25.0"
+]
+
+[project.optional-dependencies]
+ssh = [
+    "sshtunnel>=0.4.0",
+    "paramiko==3.5.0"
+]
+psycopg2 = ["psycopg2>=2.9"]
+
+[project.urls]
+Homepage = "https://github.com/franfcwong/smf2db"
+
+[project.scripts]
+smf2db = "smf2db.__main__:cli"
+
+[tool.setuptools.packages.find]
+where = ['src']

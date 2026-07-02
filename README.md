@@ -134,7 +134,7 @@ set of features:
 
 ## Contact
 
-If you want to contact me you can reach me at <franfwong@hotmail.com>.
+If you want to contact me you can reach me at <franfcwong@hotmail.com>.
 
 ## Change log
 

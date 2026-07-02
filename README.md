@@ -109,7 +109,7 @@ To upload smf70 JSON data in ``json_data/smf70.json`` to SQLite, you can simply 
 smf2db db upload 70 json_data/smf70.json --config_file configs/config.yaml
 ```
 
-For more detail how to use it, please refer to the project's official [documentation page](https://docs.readthedocs.com/dev/stable/tests.html).
+For more detail how to use it, please refer to the project's official [documentation page](https://smf2db.readthedocs.io).
 
 ## Technologies
 

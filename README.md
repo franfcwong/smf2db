@@ -142,6 +142,8 @@ If you want to contact me you can reach me at <franfcwong@hotmail.com>.
     - The first proper release
 - 0.1.1
     - Correct the typo in the contact.
+- 0.1.2
+    - Bug fixing. 
 
 ## License
 

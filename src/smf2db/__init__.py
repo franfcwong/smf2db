@@ -2,7 +2,7 @@
 # smf2db/__init__.py
 
 __app_name__ = "smf2db"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 (
     SUCCESS,

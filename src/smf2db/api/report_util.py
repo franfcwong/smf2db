@@ -475,7 +475,7 @@ def format_aid_analysis(ctl: dict, pro: dict, aid: dict):
         ["BLWLINTHD", f"{ctl['smf70pml']}", "Used (%)",
          f"{100 * ctl['smf70pmu'] / ((ctl['smf70pmi'] / pro['smf70sam']) * ctl['smf70int']):#.1f}",
          "Peak", f"{ctl['smf70pmp']}"]
-    ], tablefmt="plain",  # floatfmt=("",".1f","",".1f","",".3f"),
+    ], tablefmt="plain",
         colalign=("right", "right", "right", "right", "right", "right"))
     return report_content
 
@@ -619,11 +619,9 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
                          ])
     separating_line = ["", "", "", "------", "", "", "", "", "", "", "------------", "------------", "", "", "-----",
                        "------", "-----"]
-    # for cpu_type in ['CP', 'ICF', 'IFL', 'IIP', 'AAP']:
     if len(report_part['CP']) > 0:
         report_part['CP'].append(separating_line)
         report_part['CP'].append(
-            # f"             ------                                        ------------  ------------                        -----     ------  -----\n"\
             ["Total", "", "",
              f"{int(float(ctl['total_weight_cp'])) if isinstance(ctl['total_weight_cp'], str) and ctl['total_weight_cp'].replace('.', '', 1).isdigit() else ctl['total_weight_cp']}",
              "", "", "", "", "", "",
@@ -636,7 +634,6 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
     if len(report_part['IIP']) > 0:
         report_part['IIP'].append(separating_line)
         report_part['IIP'].append(
-            # f"             ------                                        ------------  ------------                        -----     ------  -----\n"\
             ["Total", "", "",
              f"{int(float(ctl['total_weight_iip'])) if isinstance(ctl['total_weight_iip'], str) and ctl['total_weight_iip'].replace('.', '', 1).isdigit() else ctl['total_weight_iip']}",
              "", "", "", "", "", "",
@@ -649,7 +646,6 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
     if len(report_part['ICF']) > 0:
         report_part['ICF'].append(separating_line)
         report_part['ICF'].append(
-            # f"             ------                                        ------------  ------------                        -----     ------  -----\n"\
             ["Total", "", "",
              f"{int(float(ctl['total_weight_icf'])) if isinstance(ctl['total_weight_icf'], str) and ctl['total_weight_icf'].replace('.', '', 1).isdigit() else ctl['total_weight_icf']}",
              "", "", "", "", "", "",
@@ -662,7 +658,6 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
     if len(report_part['IFL']) > 0:
         report_part['IFL'].append(separating_line)
         report_part['IFL'].append(
-            # f"             ------                                        ------------  ------------                        -----     ------  -----\n"\
             ["Total", "", "",
              f"{int(float(ctl['total_weight_ifl'])) if isinstance(ctl['total_weight_ifl'], str) and ctl['total_weight_ifl'].replace('.', '', 1).isdigit() else ctl['total_weight_ifl']}",
              "", "", "", "", "", "",
@@ -675,7 +670,6 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
     if len(report_part['AAP']) > 0:
         report_part['AAP'].append(separating_line)
         report_part['AAP'].append(
-            # f"             ------                                        ------------  ------------                        -----     ------  -----\n"\
             ["Total", "", "",
              f"{int(float(ctl['total_weight_aap'])) if isinstance(ctl['total_weight_aap'], str) and ctl['total_weight_aap'].replace('.', '', 1).isdigit() else ctl['total_weight_aap']}",
              "", "", "", "", "", "",
@@ -706,7 +700,7 @@ def format_partition_report(ctl: dict, pro: dict, bcts: list):
         report_part['CP'] = report_part['CP'] + report_part['AAP']
     if len(report_part['Deactivated']) > 0:
         report_part['CP'] = report_part['CP'] + report_part['Deactivated']
-    report_content += tb.tabulate(report_part['CP'], tablefmt='plain',  # tablefmt="simple",
+    report_content += tb.tabulate(report_part['CP'], tablefmt='plain',
                                   colalign=(
                                       "left", "center", "center", "right", "right", "right", "center", "right", "right",
                                       "center",
@@ -778,8 +772,6 @@ def format_lpar_cluster_report(ctl: dict, pro, bcts: list):
                                                          'right', 'right'
                                                              , 'right', 'right', 'right', 'right', 'right', 'right'),
                                                floatfmt=('', '', '', '', '', '', '', '', '', '.1f', '.1f', '.2f', '.2f')
-                                               # ,  '.0f',  '.0f',  '.0f',  '.0f',  '.1f',
-                                               #          '.0f', '.1f',)
                                                ) + '\n'
 
 
@@ -823,9 +815,6 @@ def format_group_capacity_report(ctl, pro, bcts):
                                         colalign=(
                                             'left', 'right', 'left', 'left', 'right', 'right', 'right'
                                             , 'right', 'right', 'right', 'right', 'right'),
-                                        # floatfmt=('', '', '', '', '', '', '', '', '', '.1f', '.1f', '.2f', '.2f')
-                                        # ,  '.0f',  '.0f',  '.0f',  '.0f',  '.1f',
-                                        #          '.0f', '.1f',)
                                         ) + '\n'
 
 
@@ -2260,7 +2249,6 @@ def format_enq_activity(pro, ctl, enqs):
                 f"     {enq['smf77dow']:>2}   "
                 f"{enq['smf77do1']:<8}{'(E)' if enq['exclusive_owner'] else '(S)'}"
             )
-            # detail_line1 = [f"{rnm}{'(Systems)' if enq['system_scope'] else ''}{'*' if enq['smf77rln'] > 44 else ''}"]
             detail_line2 = [f"{convert_si(enq['smf77wtm'], 5, 3):>6}",
                             f"{convert_si(enq['smf77wtx'], 5, 3):>6}",
                             f"{convert_si(enq['smf77wtt'], 5, 3):>6}",
@@ -2323,7 +2311,6 @@ def format_enq_activity(pro, ctl, enqs):
         if 'date' not in ctl.keys():
             detail_line4 = []
             report += f"                                            {enq['smf77sy1']:<4}          {enq['smf77sy3']:<4}\n"
-            # detail_line3 = [f"{enq['smf77sy1']:<4}", f"{enq['smf77sy3']:<4}"]
             if enq['smf77dow'] > 1:
                 report += (
                     f"                                           {enq['smf77do1']:<8}{'(E)' if enq['exclusive_owner'] else '(S)'}   "
@@ -2445,37 +2432,7 @@ def format_alias_management_groups(pro, ioq, amgs, chaps_list):
     if len(amgs) == 0:
         return None
 
-    if 'date' in pro.keys() and 'datetime' in pro.keys():
-        report_date = pro['date']
-        report_time = pro['datetime'].time().strftime('%H.%M.%S')
-        interval = format_s2min(pro['smf78int'])
-    elif 'date' in pro.keys():
-        report_date = pro['date']
-        report_time = '00.00.00'
-        interval = format_s2hr(pro['smf78int'])
-    else:
-        report_date = pro['smf78ist'].date()
-        report_time = pro['smf78ist'].time().strftime('%H.%M.%S')
-        interval = format_s2min(pro['smf78int'])
-    zos_ver = 'V' + pro['smf78mvs'][2:4].lstrip('0') + 'R' + pro['smf78mvs'][4:6].lstrip('0')
-    interval_x = f"{interval[:-3]}"
-    whitespace = ' '
-    header1 = [["                                                I/O   Q U E U I N G   A C T I V I T Y"]]
-    header2 = [
-        [f"{whitespace:>12}", f"z/OS {zos_ver}", f"{whitespace:>13}", f"System ID {ioq['smf78sid']}", f"{whitespace:>6}",
-         f"Date {report_date:%m/%d/%Y}", f"{whitespace:>11}", f"Interval {interval_x}"],
-        ["", "", "", f"RMF Version {pro['smf78mfv']:<5}", "", f"Time {report_time}", "", f"Cycle {pro['smf78cyc'] / 1000:5.3f} Seconds"]
-    ]
-    header3 = [
-        ["Total Samples =", f"{pro['smf78sam']:>5}", " ",
-         "IODF =", f"{ioq['r783tsf']:2}", "  ",
-         "Cr-Date:", f"{ioq['r783tdy']}", "  ",
-         "Cr-Time:", f"{ioq['r783ttm']}", "  ",
-         "Act:", f"{'Activate' if ioq['config_changed_since_ipl'] else 'POR':<8}"]
-    ]
-    report = (#tb.tabulate(header1, tablefmt="plain") + "\n" + tb.tabulate(header2, tablefmt="plain") + "\n" +
-              #tb.tabulate(header3, tablefmt="plain") +
-              "\n--------------------------------------------------------------------------------------------------------------------------------------------\n"
+    report = ("\n--------------------------------------------------------------------------------------------------------------------------------------------\n"
               "                                                     Alias Management Groups\n"
               "--------------------------------------------------------------------------------------------------------------------------------------------\n")
     report_detail = []
@@ -2526,37 +2483,7 @@ def format_alias_management_groups(pro, ioq, amgs, chaps_list):
 
 
 def format_logical_control_units(ioq, pro, lcus, chas_list, amg_list, target_lcu=None):
-    if 'date' in pro.keys() and 'datetime' in pro.keys():
-        report_date = ioq['date']
-        report_time = ioq['datetime'].time().strftime('%H.%M.%S')
-        interval = format_s2min(pro['smf78int'])
-    elif 'date' in pro.keys():
-        report_date = ioq['date']
-        report_time = '00.00.00'
-        interval = format_s2hr(pro['smf78int'])
-    else:
-        report_date = ioq['smf78ist'].date()
-        report_time = ioq['smf78ist'].time().strftime('%H.%M.%S')
-        interval = format_s2min(pro['smf78int'])
-    zos_ver = 'V' + pro['smf78mvs'][2:4].lstrip('0') + 'R' + pro['smf78mvs'][4:6].lstrip('0')
-    interval_x = f"{interval[:-3]}"
-    whitespace = ' '
-    header1 = [["                                                I/O   Q U E U I N G   A C T I V I T Y"]]
-    header2 = [
-        [f"{whitespace:>12}", f"z/OS {zos_ver}", f"{whitespace:>13}", f"System ID {ioq['smf78sid']}", f"{whitespace:>6}",
-         f"Date {report_date:%m/%d/%Y}", f"{whitespace:>11}", f"Interval {interval_x}"],
-        ["", "", "", f"RMF Version {pro['smf78mfv']:<5}", "", f"Time {report_time}", "", f"Cycle {pro['smf78cyc'] / 1000:5.3f} Seconds"]
-    ]
-    header3 = [
-        ["Total Samples =", f"{pro['smf78sam']:>5}", " ",
-         "IODF =", f"{ioq['r783tsf']:2}", "  ",
-         "Cr-Date:", f"{ioq['r783tdy']}", "  ",
-         "Cr-Time:", f"{ioq['r783ttm']}", "  ",
-         "Act:", f"{'Activate' if ioq['config_changed_since_ipl'] else 'POR':<8}"]
-    ]
-    report = (#tb.tabulate(header1, tablefmt="plain") + "\n" + tb.tabulate(header2, tablefmt="plain") + "\n" +
-              #tb.tabulate(header3, tablefmt="plain") +
-              "\n--------------------------------------------------------------------------------------------------------------------------------------------------------\n"
+    report = ("\n--------------------------------------------------------------------------------------------------------------------------------------------------------\n"
               "                                                     Logical Control Units\n"
               "--------------------------------------------------------------------------------------------------------------------------------------------------------\n")
     report_detail = []
@@ -2625,8 +2552,9 @@ def format_logical_control_units(ioq, pro, lcus, chas_list, amg_list, target_lcu
                     f"{cha['iocmr'] if pd.notna(cha['iocmr']) else '0.0':{'> 5.1f' if pd.notna(cha['iocmr']) else '>5'}}"
                 ]
                 report_detail.append(detail_line)
-            # else:
-            #     detail_line += [f"{cha['r783cpid']:2}", "", "", "", "", "", "Path", "Offline"]
+            else:
+                detail_line += [f"{cha['r783cpid']:2}", "", "", "", "", "", "Path", "Offline"]
+                report_detail.append(detail_line)
 
         if len(chas_list[idx_1]) == 1 and pd.notna(amg_list[idx_1]):
             detail_line = [f"  {amg_list[idx_1]['r783amgs']:<8}"]
@@ -3207,20 +3135,14 @@ def format_private_storage_detail(pvt, pro, pvsps):
                236: "SWA", 237: "SWA", 239: "SQA", 241: "CSA", 245: "SQA", 247: "ESQA", 248: "ESQA",
                251: "Modules", 252: "Reentrant", 253: "LSQA", 254: "LSQA", 255: "LSQA"}
     if 'date' in pro.keys() and 'datetime' in pro.keys():
-        # report_date = pvt['date']
-        # report_time = pvt['datetime'].time().strftime('%H.%M.%S')
         start_time = pvt['datetime']
         end_time = start_time + pd.to_timedelta(pro['smf78int'], unit='s')
         interval = format_s2min(pro['smf78int'])
     elif 'date' in pro.keys():
-        # report_date = pvt['date']
-        # report_time = '00.00.00'
         start_time = dt.datetime.combine(pvt['date'], dt.time())
         end_time = start_time + pd.to_timedelta(pro['smf78int'], unit='s')
         interval = format_s2hr(pro['smf78int'])
     else:
-        # report_date = pvt['smf78ist'].date()
-        # report_time = pvt['smf78ist'].time().strftime('%H.%M.%S')
         start_time = pvt['smf78ist']
         end_time = start_time + pd.to_timedelta(pro['smf78int'], unit='s')
         interval = format_s2min(pro['smf78int'])
@@ -3382,7 +3304,6 @@ def format_private_storage_summary(pvt, comn, pro):
     b1 = starting_b - pvt['lsal_vsdbmin'] + 1  # lsqa/swa
     b2 = pvt['r782gmlb']  # getmain limit
     b4 = int(pvt['r782urab'], 16)
-    # b5 = int(comn['r782pa'], 16)
     b3 = b4 + pvt['usal_vsdbmax']
     starting_a = int('0x7FFFFFFF', 0)
     a1 = starting_a - pvt['lsal_vsdamin'] + 1  # lsqa/swa
@@ -3419,8 +3340,6 @@ def format_private_storage_summary(pvt, comn, pro):
             f"                       | System Region   {convert_bi(int(pvt['r782urab'], 16) - int(comn['r782pa'], 16), 4, 0, unit='K'):>5}|                 |                      |\n"
             f"                {comn['r782pa'][:-1].lstrip('0') + comn['r782pa'][-1]:>6} ------------------------                 ------------------------ "
             f"{pvt['r782uraa'][:-1].lstrip('0') + pvt['r782uraa'][-1]:>8}\n\n")
-        # f"                     ---------- Below 16M ----------------  --------------- Above 16M -----------\n"
-        # f"                       Min             Max             Avg    Min             Max             Avg\n")
         report += tb.tabulate([
             ["LSQA/SWA/229/230"],
             [" Free Pages (Bytes)", f"{convert_bi(pvt['lsfp_vsdbmin'], 4, 0, unit='K'):>5}",
@@ -3504,13 +3423,10 @@ def hr_min_sec_milli(td):
 
 def format_policy_page(duration, policy, sid_list, rgss, rgss_wmss, rgss_wmss_scss):
     if duration == 'Hourly':
-        # report_date = policy['date']
         report_time = policy['datetime'].time().strftime('%H.%M.%S')
     elif duration == 'Daily':
-        # report_date = policy['date']
         report_time = '00.00.00'
     else:
-        # report_date = policy['smf72ist'].date()
         report_time = policy['smf72ist'].time().strftime('%H.%M.%S')
 
     policy_page_table = [
@@ -3571,8 +3487,6 @@ def format_policy_page(duration, policy, sid_list, rgss, rgss_wmss, rgss_wmss_sc
                         floatfmt=('', '.1f', '.1f', '.1f', '.4f', '.4f', '.4f')) + '\n\n' +
             tb.tabulate(policy_systems, tablefmt='plain',
                         headers=header_col,
-                        # colalign=col_align,
-                        # floatfmt=float_fmt
                         ) + '\n'
     )
 
@@ -3650,18 +3564,11 @@ def format_policy_page(duration, policy, sid_list, rgss, rgss_wmss, rgss_wmss_sc
                  "------>\n", "System\n", "<---CPU\n#CPS", "Consumption\nMSU", "---->\nSU/Sec",
                  "<------\nMin", "CPU\nMax", "Capacity-->\nDefined As",
                  "<----\nUsage", "Memory->\nLimit"],
-        # colalign=('left','left','left','left','lef','right','right','right','right','right','left','right','right'),
         floatfmt=('', '', '', '', '', '.2f', '.0f', '.0f')
     )
 
 
 def format_service_class_being_served(ssss):
-    # if wms.__class__.__name__ == 'Smf72WmsHr':
-    #     ssss = wms.smf72_sss_hrs
-    # elif wms.__class__.__name__ == 'Smf72WmsDa':
-    #     ssss = wms.smf72_sss_das
-    # else:  # wms.__class__.__name__ == 'Smf72_wms':
-    #     ssss = wms.smf72_ssss
     if len(ssss) == 0:
         return None
     service_class_list = []
@@ -3676,19 +3583,6 @@ def format_service_class_being_served(ssss):
 
 
 def format_state_samples_breakdown(target, wrss):
-    # if target.__class__.__name__ == 'Smf72ScsHr':
-    #     wrss = target.smf72_wrs_hrs
-    # elif target.__class__.__name__ == 'Smf72Scs':
-    #     wrss = target.smf72_wrss
-    # elif target.__class__.__name__ == 'Smf72ScsDa':
-    #     wrss = target.smf72_wrs_das
-    # elif target.__class__.__name__ == 'Smf72SmsHr':
-    #     wrss = target.smf72_wrsx_hrs
-    # elif target.__class__.__name__ == 'Smf72Wms':
-    #     wrss = target.smf72_wrsxs
-    # else:
-    #     wrss = target.smf72_wrsx_das
-
     if len(wrss) == 0:
         return None
 
@@ -4050,11 +3944,11 @@ def format_transaction_detail(target, wms, policy, ssss):
             resource_group = '*None'
         else:
             resource_group = wms['r723ggnm']
-        if is_bit_set(wms['r723mscf'],8, 4) and is_bit_set(wms['r723mscf'],8, 5):  #cpu_protection'] and wms['stor_protection']:
+        if is_bit_set(wms['r723mscf'],8, 4) and is_bit_set(wms['r723mscf'],8, 5):
             critical = 'Storage + CPU'
-        elif is_bit_set(wms['r723mscf'],8, 4): #wms['cpu_protection']:
+        elif is_bit_set(wms['r723mscf'],8, 4):
             critical = 'CPU'
-        elif is_bit_set(wms['r723mscf'],8, 5): #wms['stor_protection']:
+        elif is_bit_set(wms['r723mscf'],8, 5):
             critical = 'Storage'
         else:
             critical = 'None'
@@ -4065,7 +3959,7 @@ def format_transaction_detail(target, wms, policy, ssss):
                       f"Resource Group={resource_group:<8}", " ",
                       f"Period={target['r723cper']:<1}", f"Importance={target['r723cimp']:<1}"],
                      ["", "", "", "", f"Critical     ={critical}"], "",
-                     f"{'I/O Priority Group=High' if is_bit_set(policy['r723mscf'],8, 7) else ''}"],
+                     f"{'I/O Priority Group=High' if policy['io_high'] else ''}"],
                     tablefmt='plain'
                 ) + '\n'
         )
@@ -4175,7 +4069,7 @@ def format_transaction_detail(target, wms, policy, ssss):
                                  "-IIP/AAP>", "<---", "Enclaves-->"],
                         colalign=('left', 'right', 'left', 'right', 'left', 'right', 'right', 'right', 'left', 'right'),
                         floatfmt=('', '.2f', '', '', '', '.2f', '.2f', '.2f', '', '.2f')) + '\n' + \
-            tb.tabulate(transaction_table2,  # tablefmt='plain',
+            tb.tabulate(transaction_table2,
                         headers=["<-----", "Service->", "<--", "Service Time->", "<---", "Appl%->", "<---",
                                  "Promoted->",
                                  "<---", "DASD I/O->", "<---", "Storage->", "<---", "Page In Rates>"],
@@ -4200,7 +4094,7 @@ def format_goal_and_response_lpar(scs, pro, rts):
     response_time_sid = 'N/A'
 
     response_line = []
-    if is_bit_set(scs['r723crs1'],8,0): #scs['is_heterogeneous']:
+    if is_bit_set(scs['r723crs1'],8,0):
         response_line = ["Goal:", "N/A"]
     else:
         if scs['class_goal_type'] == 'Execution Velocity':
@@ -4340,7 +4234,7 @@ def format_goal_and_response_lpar(scs, pro, rts):
          f"{scs['r723rcod'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}",
          f"{scs['r723cpqu'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}"]
     ]
-    return (  # '\n' + #response_code +
+    return (
             tb.tabulate([tb.SEPARATING_LINE, response_line, tb.SEPARATING_LINE], tablefmt='plain') + '\n' +
             tb.tabulate(response_table,
                         headers=["\n\nSystem",
@@ -4352,11 +4246,10 @@ def format_goal_and_response_lpar(scs, pro, rts):
                                  "\n<--\nCry", "Using\n % >\nCnt",
                                  "\n<--\nUnk", "\nDelay\nIdl", "\n%  \nCry", "\n-->\nCnt", "\n%\nQui"],
                         colalign=('left', 'center', 'right', 'right', 'right', 'right', 'right', 'right', 'right',
-                                  # 'left',
                                   'right', 'right', 'right', 'right', 'right', 'right', 'right'
                                                                                         'right', 'right', 'right',
                                   'right', 'right', 'right', 'right'),
-                        floatfmt=('', '', '.1f', '.1f', '.1f', '.1f', '.1f', '.1f', '.1f',  # '',
+                        floatfmt=('', '', '.1f', '.1f', '.1f', '.1f', '.1f', '.1f', '.1f',
                                   '.1f', '.1f', '.1f', '.1f', '.1f', '.1f', '.1f',
                                   '.1f', '.1f',
                                   '.1f', '.1f', '.1f', '.1f', '.1f')) + '\n')
@@ -4368,12 +4261,6 @@ def format_goal_and_response_sysplex(wms, scss, pro):
 
     if wms['r723crcp'] == 0:
         return None
-    # if wms.__class__.__name__ == 'Smf72WmsHr':
-    #     scss = wms.smf72_scs_hrs
-    # elif wms.__class__.__name__ == 'Smf72WmsDa':
-    #     scss = wms.smf72_scs_das
-    # else:  # wms.__class__.__name__ == 'Smf72Wms':
-    #     scss = wms.smf72_scss
 
     response_line = []
     response_time_sid = 'N/A'
@@ -4381,7 +4268,7 @@ def format_goal_and_response_sysplex(wms, scss, pro):
         response_line = ["Goal:", "N/A"]
     else:
         if wms['class_goal_type'] == 'Execution Velocity':
-            if wms['velocity_io_delays']:  # delays used
+            if wms['velocity_io_delays']:
                 io_mgmt = wms['execution_velocity']
                 init_mgmt = wms['execution_velocity']
             elif wms['r723ccus'] > 0:
@@ -4486,17 +4373,6 @@ def format_goal_and_response_sysplex(wms, scss, pro):
 
     if not wms['is_heterogeneous']:
         if wms['class_goal_type'] in ('Percentile Resp. Time', 'Average Resp. Time'):
-            # if wms['response_time_millisec']:
-            #     response_time = wms['r723cval'] * 0.001
-            # elif wms['response_time_seconds']:
-            #     response_time = wms['r723cval']
-            # elif wms['response_time_minutes']:
-            #     response_time = wms['r723cval'] * 60
-            # elif wms['response_time_hours']:
-            #     response_time = wms['r723cval'] * 3600
-            # else:
-            #     response_time = None
-            # (rtime_hr, rtime_min, rtime_sec, rtime_milli) = hr_min_sec_milli(pd.to_timedelta(response_time, unit='s'))
             if wms['class_goal_type'] == 'Average Resp. Time':
                 if wms['r723crcp'] > 0:
                     if pd.notna(wms['r723ctetx']):
@@ -4511,12 +4387,6 @@ def format_goal_and_response_sysplex(wms, scss, pro):
     response_table = []
 
     for scs in scss:
-        # if scs.__class__.__name__ == 'Smf72ScsHr':
-        #     pro = scs.smf72_pro_hr
-        # elif scs.__class__.__name__ == 'Smf72ScsDa':
-        #     pro = scs.smf72_pro_da
-        # else:  # scs.__class__.__name__ == 'Smf72Scs':
-        #     pro = scs.smf72_pro
         interval_list.append(pro['smf72int'])
         zaap_inst_list.append(is_bit_set(pro['smf72prf'],8,4))
         ziip_inst_list.append(is_bit_set(pro['smf72prf'],8,5))
@@ -4587,18 +4457,6 @@ def format_goal_and_response_sysplex(wms, scss, pro):
             response_time_sid = '   '
             if not scs['is_heterogeneous']:
                 if scs['class_goal_type'] in ('Percentile Resp. Time', 'Average Resp. Time'):
-                    # if scs['response_time_millisec']:
-                    #     response_time = scs['r723cval'] * 0.001
-                    # elif scs['response_time_seconds']:
-                    #     response_time = scs['r723cval']
-                    # elif scs['response_time_minutes']:
-                    #     response_time = scs['r723cval'] * 60
-                    # elif scs['response_time_hours']:
-                    #     response_time = scs['r723cval'] * 3600
-                    # else:
-                    #     response_time = None
-                    # (rtime_hr, rtime_min, rtime_sec, rtime_milli) = hr_min_sec_milli(
-                    #     pd.to_timedelta(response_time, unit='s'))
                     if scs['class_goal_type'] == 'Average Resp. Time':
                         if scs['r723crcp'] > 0:
                             if pd.notna(scs['r723ctetx']):
@@ -4613,7 +4471,7 @@ def format_goal_and_response_sysplex(wms, scss, pro):
              f"{scs['r723ccus'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}",
              f"{aapusgp if is_bit_set(pro['smf72prf'],8,4) else 'N/A':>4}", f"{iipusgp if is_bit_set(pro['smf72prf'],8,5) else 'N/A':>4}",
              f"{scs['r723ciou'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}",
-             f"{scs['r723ctdq'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}",  # {value_7}",
+             f"{scs['r723ctdq'] / scs['r723ctsa'] * 100 if scs['r723ctsa'] > 0 else 0:>4.1f}",
              f"{top_scs_vals[0]}", f"{top_scs_vals[1]}", f"{top_scs_vals[2]}",
              f"{top_scs_vals[3]}", f"{top_scs_vals[4]}", f"{top_scs_vals[5]}",
              f"{top_scs_vals[6]}",
@@ -4635,7 +4493,7 @@ def format_goal_and_response_sysplex(wms, scss, pro):
          f"{aapusgp_all if max(zaap_inst_list) == 1 else 'N/A':>4}",
          f"{iipusgp_all if max(ziip_inst_list) == 1 else 'N/A':>4}",
          f"{wms['r723ciou'] / wms['r723ctsa'] * 100 if wms['r723ctsa'] > 0 else 0:>4.1f}",
-         f"{wms['r723ctdq'] / wms['r723ctsa'] * 100 if wms['r723ctsa'] > 0 else 0:>4.1f}",  # {value_7_all}",
+         f"{wms['r723ctdq'] / wms['r723ctsa'] * 100 if wms['r723ctsa'] > 0 else 0:>4.1f}",
          f"{top_all_values[0]}", f"{top_all_values[1]}", f"{top_all_values[2]}",
          f"{top_all_values[3]}", f"{top_all_values[4]}", f"{top_all_values[5]}",
          f"{top_all_values[6]}",
@@ -5019,7 +4877,6 @@ def format_cachsys_overview(cache):
         ["Cache I/O\nRequests", "--------\nCount", "-----\nRate", "Read I/O\nHits", "Requests\nRate", "--------\nH/R",
          "--------\nCount", "--------\nRate", "Write I/O\nFast", "Requests\nRate", "--------\nHits", "-------\nRate",
          "-------\nH/R", "%\nRead"],
-        # ["Requests","Count",   "Rate",  "Hits",    "Rate",    "H/R",     "Count",   "Rate",    "Fast",     "Rate",    "Hits",    "Rate",   "H/R",   "Read"],
         tb.SEPARATING_LINE,
         ["Normal",
          f"{convert_si(cache['r745drcr'], 8, 0)}",
@@ -5165,8 +5022,6 @@ def format_cachsys_overview(cache):
                         floatfmt=('', '.0f', '.1f', '.0f', '.1f', '.0f', '.1f', '', '', '.0f', '.1f')) + '\n' +
             "---CKD Statistics--- ---Record Caching---  ---Synch I/O Activity---  --Host Adapter Activity-- ---------Disk Activity-------\n" +
             tb.tabulate(report3, tablefmt='plain',
-                        # headers=["---CKD Statistics","---","---Record","Caching---","---Synch","I/O","Activity---","--Host","Adapter","Activity-","---------",
-                        #         "Disk","Activity","-------"],
                         colalign=('left', 'right', 'left', 'right', 'left', 'right', 'right', 'left', 'right', 'right',
                                   'left', 'right', 'right', 'right'),
                         floatfmt=('', '.0f', '', '.0f', '', '.1f', '.3f', '', '', '', '', '.3f', '.0f', '.0f'))
@@ -5177,10 +5032,10 @@ def format_cachsys_status_and_overview(duration, cachsys, pro):
     cachsys_overview = format_cachsys_header(duration, cachsys, pro, 2)
     cachsys_overview += '\n'
     if duration == 'Hourly':
-        cdate = cachsys.date
-        ctime = cachsys.datetime.time().strftime('%H.%M.%S')
+        cdate = cachsys['date']
+        ctime = cachsys['datetime'].time().strftime('%H.%M.%S')
     elif duration == 'Daily':
-        cdate = cachsys.date
+        cdate = cachsys['date']
         ctime = '00.00.00'
     else:
         cdate = cachsys['smf74ist'].date()
@@ -5241,7 +5096,6 @@ def format_cachsys_status_and_overview(duration, cachsys, pro):
         "\n--------------------------------------------------------------------------------------------------------------------------------------------\n" \
         "                                                      CACHE SUBSYSTEM OVERVIEW\n" \
         "--------------------------------------------------------------------------------------------------------------------------------------------\n\n"
-    #    )
     cachsys_overview += format_cachsys_overview(cachsys)
     return cachsys_overview
 
@@ -5658,12 +5512,6 @@ def format_cf2cf_activity(duration, cf, cfrfs, peer_cfs, dupchpas):
         total_sq_delay_time = 0
         first_cfrf = True
         for idx_2, cfrf in enumerate(cfrf_list):
-            # if cfrf.__class__.__name__ == 'Smf74_cfrf_hr':
-            #     dupchpas = cfrf.smf74_dupchpa_hrs
-            # elif cfrf.__class__.__name__ == 'Smf74_cfrf_da':
-            #     dupchpas = cfrf.smf74_dupchpa_das
-            # else:
-            #     dupchpas = cfrf.smf74_dupchpas
             total_reqs += (cfrf['r744rhes'] + cfrf['r744rrcs'] + cfrf['r744rres'] + cfrf['r744rrsa'])
             total_delay_reqs += cfrf['r744rdsc']
             total_service_time += cfrf['r744rsse']
@@ -5958,7 +5806,6 @@ def format_subch_activity(duration, cf, lcfs, chpas):
 
 
 def format_str_activity(duration, structure, sreqs, interval):
-    # str_dict = {"0x01":"UNSERIAL", "0x02":"SERIAL", "0x03":"LOCK", "0x04":"CACHE"}
     status_2 = ''
     if structure['r744qact'] or structure['r744qrbn'] or structure['r744qrbo'] or \
             structure['r744qrbp'] or structure['r744qrbd'] or \
@@ -6139,18 +5986,6 @@ def format_str_activity(duration, structure, sreqs, interval):
 
 
 def format_cf_summary(duration, cf, strs, lcfs, procs, str_group_list, mscms_list, adups_list):
-    # if cf.__class__.__name__ == 'Smf74_cf_hr':
-    #     strs = cf.smf74_str_hrs
-    #     lcfs = cf.smf74_lcf_hrs
-    #     procs = cf.smf74_proc_hrs
-    # elif cf.__class__.__name__ == 'Smf74_cf_da':
-    #     strs = cf.smf74_str_das
-    #     lcfs = cf.smf74_lcf_das
-    #     procs = cf.smf74_proc_das
-    # else:
-    #     strs = cf.smf74_strs
-    #     lcfs = cf.smf74_lcfs
-    #     procs = cf.smf74_procs
     report = format_cf_header(duration, cf)
     usage_summary = [
         ["--------------------------------------------------------------------------------------------------------------------------------------------------"],
@@ -6219,7 +6054,6 @@ def format_cf_summary(duration, cf, strs, lcfs, procs, str_group_list, mscms_lis
     total_alloc_size = 0
     total_cf_util = 0
     str_dict = {1: "UNSERIAL", 2: "SERIAL", 3: "LOCK", 4: "CACHE"}
-    # str_group_list = [list(g) for k, g in groupby(strs, attrgetter('r744styp'))]
     has_scm_data = False
     has_adup_data = False
     general_structure_detail = [tb.SEPARATING_LINE]
@@ -6230,15 +6064,6 @@ def format_cf_summary(duration, cf, strs, lcfs, procs, str_group_list, mscms_lis
         first_mscm_type = None
         first_adup_type = None
         for ix, structure in enumerate(str_group):
-            # if structure.__class__.__name__ == 'Smf74_str_hr':
-            #     mscms = structure.smf74_mscm_hrs
-            #     adups = structure.smf74_adup_hrs
-            # elif structure.__class__.__name__ == 'Smf74_str_da':
-            #     mscms = structure.smf74_mscm_das
-            #     adups = structure.smf74_adup_das
-            # else:
-            #     mscms = structure.smf74_mscms
-            #     adups = structure.smf74_adups
             if structure['r744qact'] or structure['r744qrbn'] or structure['r744qrbo'] or \
                     structure['r744qrbp'] or structure['r744qrbd'] or \
                     structure['r744scei'] or structure['r744sadi'] or structure['r744sdas']:
@@ -6414,7 +6239,6 @@ def format_cf_summary(duration, cf, strs, lcfs, procs, str_group_list, mscms_lis
 def format_cf_activity_report(duration, cf, strs, report_type, lcfs, procs, cfrfs, str_group_list,
                               chpas, sreqs, peer_cfs, dupchpas,
                               mscms_list, adups_list, str_type_list=None):
-    # "CF Usage Summary", "Subchannel Activity", "CF to CF Activity", "CF Structure Activity"
     cf_structure_activity = [
         ["------------------------------------------------------------------------------------------------------------------------------"],
         [f" Coupling Facility Name = {cf['r744fnam']:<8}"],
@@ -6443,7 +6267,6 @@ def format_cf_activity_report(duration, cf, strs, report_type, lcfs, procs, cfrf
         contain_cf_structure_data = False
         report = format_cf_header(duration, cf)
 
-        # str_group_list = [list(g) for k, g in groupby(strs, attrgetter('r744styp'))]
         for idx_1, str_group in enumerate(str_group_list):
             if len(str_type_list) > 0:
                 if str_group[0]['r744styp'] not in str_type_list:
@@ -6634,7 +6457,7 @@ def format_device_detail(devs, interval, total_number_of_samples, sub):
             not_ready_percent_dict[dev['smf74lcu']] += dev['not_ready_percent']
             num_of_mts_dict[dev['smf74lcu']] += dev['smf74mtc']
             avg_mt_time_mtp_dict[
-                dev['smf74lcu']] += dev['smf74mtp']  # * interval/total_number_of_samples/dev.mtc if dev.mtc > 0 else 0)
+                dev['smf74lcu']] += dev['smf74mtp']
             avg_mt_time_mtc_dict[dev['smf74lcu']] += dev['smf74mtc']
             time_dev_alloc_dict[dev['smf74lcu']] += dev['time_dev_alloc']
         if sub == "0020":
@@ -7018,7 +6841,6 @@ def format_device_detail(devs, interval, total_number_of_samples, sub):
 
 
 def format_device_activity_report(duration, dctl, devs, pro, device_list):
-    # device_list = [list(g) for k, g in groupby(devs, attrgetter('lcu'))]
     if len(device_list) == 0:
         return None
 
@@ -7078,7 +6900,7 @@ def format_ess_header(duration, cntl, pros, report_type):
     header4d = [["                                    -------- Read Operations --------  -------- Write Operations -------"]]
     if report_type == 'Link':
         return (tb.tabulate(header1a, tablefmt="plain") + "\n" + tb.tabulate(header2, tablefmt="plain") + "\n" +
-                tb.tabulate(header3, tablefmt="plain") + "\n") # + tb.tabulate(header4a, tablefmt="plain") + "\n")
+                tb.tabulate(header3, tablefmt="plain") + "\n")
     elif report_type == 'SyncIO':
         return (tb.tabulate(header1b, tablefmt="plain") + "\n" + tb.tabulate(header2, tablefmt="plain") + "\n" +
                 tb.tabulate(header3, tablefmt="plain") + "\n" + tb.tabulate(header4b, tablefmt="plain") + "\n")
@@ -7186,7 +7008,7 @@ def format_link_statistics(duration, cntl, lsss, pros):
     return report
 
 def format_sync_io_statistics(duration, cntl, siols, pros):
-    link_speed = {'01':'GEN1', '02':'GEN2', '03':'GEN3', '04':'GEN4'}
+    link_speed = {1:'GEN1', 2:'GEN2', 3:'GEN3', 4:'GEN4'}
     if len(siols) == 0:
         return None
     report = format_ess_header(duration, cntl, pros, 'SyncIO')
@@ -7195,7 +7017,7 @@ def format_sync_io_statistics(duration, cntl, siols, pros):
         if siol['r748scbr'] > 0 or siol['r748scbw'] > 0 or siol['r748snbw'] > 0:
             line_detail = \
                 [f"{siol['r748siid']:4}",
-                 f"{'Optical PCIe' if siol['r748styp']=='01' else 'Unknown':<12}  {link_speed.get(siol['r748sspd'], 'UNKN'):<4} {siol['r748swdh']:>2}",
+                 f"{'Optical PCIe' if int(siol['r748styp'])==1 else 'Unknown':<12}  {link_speed.get(int(siol['r748sspd']), 'UNKN'):<4} {siol['r748swdh']:>2}",
                  f"{convert_si(siol['r748scro']/cntl['r748cint'],5,1):>7}",
                  f"{convert_bi(siol['r748scbr']*128*1024/siol['r748scro'],4,1) if siol['r748scro'] > 0 else 'N/A':>6}",
                  f"{convert_si(siol['r748scrt']*1000/siol['r748scro'],5,1) if siol['r748scro'] > 0 else 'N/A':>7}",
@@ -7211,7 +7033,7 @@ def format_sync_io_statistics(duration, cntl, siols, pros):
             report_detail.append(line_detail)
         else:
             line_detail = [f"{siol['r748siid']:4}",
-                           f"{'Optical PCIe' if siol['r748styp']=='01' else 'Unknown':<12}  {link_speed.get(siol['r748sspd'], 'UNKN'):<4} {siol['r748swdh']:>2}",
+                           f"{'Optical PCIe' if int(siol['r748styp'])==1 else 'Unknown':<12}  {link_speed.get(int(siol['r748sspd']), 'UNKN'):<4} {siol['r748swdh']:>2}",
                            "NO DATA","TO REPORT","OR ZERO"]
             report_detail.append(line_detail)
     return report + tb.tabulate(report_detail,
@@ -7812,7 +7634,6 @@ def format_xcf_path_detail(paths, paths_group_list, pro):
     header2 = [
         [f"                                                Inbound To {pro['smf74sid']}                                                               "],
     ]
-    # paths_group_list = [list(g) for k, g in groupby(paths, attrgetter('r742pdir'))]
     outbound_dict = {}
     inbound_dict = {}
     in_report_table = []
@@ -7897,7 +7718,6 @@ def format_xcf_mbr_detail(mbrs, mbr_group_list, pro):
         [f"Members Communicating With {pro['smf74sid']}                                           Members On {pro['smf74sid']}"],
         ["-----------------------------------------------       ------------------------------------------------"]
     ]
-    # mbr_group_list = [list(g) for k, g in groupby(mbrs, attrgetter('r742mgrp'))]
     mbr_comm_dict = {}
     mbr_on_dict = {}
     report_table = []

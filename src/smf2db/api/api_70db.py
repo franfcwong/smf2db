@@ -103,7 +103,13 @@ def upload_70db(db_engines: dict, db_session: Session, jsonfiles: str, partition
                             f"\nThe file {jsonfile} cannot be processed until the corresponding Smf70 Subtype 1 records have been processed. This file will be skipped.")
                         continue
 
-                    df_dict['pro']['csc'] = csc
+                    for table in df_dict.keys():
+                        if df_dict[table].shape[0] > 0:
+                            df_dict[table] = df_dict[table].copy().reset_index()
+                            df_dict[table]['csc'] = csc
+                            df_dict[table].set_index(
+                                [col.name for col in tbls[table].__table__.primary_key.columns.values()],
+                                inplace=True)
 
             if df_dict['bct'].shape[0] > 0:
                 for row in df_dict['bct'].reset_index()[

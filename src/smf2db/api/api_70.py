@@ -760,10 +760,13 @@ def format_70df(df: pd.DataFrame) -> dict:
 
     dfs_dict = {'pro': pd.DataFrame(), 'ctl': pd.DataFrame(), 'cpu': pd.DataFrame(), 'aid': pd.DataFrame(),
                 'bct': pd.DataFrame(), 'bpd': pd.DataFrame(), 'trg': pd.DataFrame(), 'ccf': pd.DataFrame(),
-                'typ3': pd.DataFrame(), 'typ4': pd.DataFrame(), 'typ5': pd.DataFrame(), 'wc': pd.DataFrame()}
+                'typ3': pd.DataFrame(), 'typ4': pd.DataFrame(), 'typ5': pd.DataFrame(), 'wc': pd.DataFrame(),
+                'bct_cpu': pd.DataFrame()}
 
-    if 'smf70cis' not in df.columns:
-        return dfs_dict
+    # For subtype 1 records, check if section smf70cis exist, otherwise exit
+    if 'smf70ctl' in df.columns:
+        if 'smf70cis' not in df.columns:
+            return dfs_dict
 
     df['isFirst'] = True
     dfs_dict['pro'] = build_pro(df)

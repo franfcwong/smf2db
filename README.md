@@ -42,7 +42,7 @@ Ensure you download the wheel file and upload to USS before beginning. The requi
 
 If installing from wheel file, you can run this:
 ```
-python -m pip install smf2db-0.1.1-py3-none-any.whl
+python -m pip install smf2db-0.1.3-py3-none-any.whl
 ```
 
 For more detail instructions, please refer to the project's official [documentation](https://smf2db.readthedocs.io).
@@ -143,6 +143,8 @@ If you want to contact me you can reach me at <franfcwong@hotmail.com>.
 - 0.1.1
     - Correct the typo in the contact.
 - 0.1.2
+    - Bug fixing. 
+- 0.1.3
     - Bug fixing. 
 
 ## License

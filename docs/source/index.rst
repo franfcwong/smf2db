@@ -20,7 +20,7 @@ Reference guide
 
 Reference documentation is more complete and programmatic in nature, it is a
 collection of information that can be quickly referenced. If you would like
-usecase-driven documentation, see :ref:`get-started`.
+use case driven documentation, see :ref:`get-started`.
 
 .. toctree::
    :maxdepth: 2

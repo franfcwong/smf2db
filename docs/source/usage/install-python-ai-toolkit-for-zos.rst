@@ -35,7 +35,7 @@ Install the required packages
 
 Packages included in this AI Toolkit is available at
 `IBM Python AI Toolkit Web Interface`_. The
-packages required by Smf2pgdb from IBM Python AI Tookkit are shown below.
+packages required by Smf2pgdb from IBM Python AI Toolkit are shown below.
 
 .. code-block:: console
 
@@ -56,7 +56,7 @@ with the ``hash=SHA`` setting::
   chtag -tc iso8859-1 requirements.txt
 
 After copying the packages shown above into the requirements.txt with the hash information, run
-the following comand to install it::
+the following command to install it::
 
   pip install -r requirements.txt
 

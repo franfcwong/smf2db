@@ -35,7 +35,7 @@ Options
 
     The partition scheme to be used for the interval databases. Defaults to ``no partition``, that
     means, only one single database will be created. If it is ``weekday``, it means 7 databases will
-    be created, 1 for Monday, 2 for Tuseday, etc. For ``day of month``, 31 databases will be created as
+    be created, 1 for Monday, 2 for Tuesday, etc. For ``day of month``, 31 databases will be created as
     named by day of the month and for ``week number``, 52 databases will be created.
 
 .. option:: -h HOST, --host=HOST
@@ -49,7 +49,7 @@ Options
 .. option:: --ssh=USE
 
    USE can either ``True`` or ``False``.  Defaults to ``False``. If specified, it means SSH connection
-   will be used to coonect to the database.
+   will be used to connect to the database.
 
 .. option:: --sqlite_path=PATH
 

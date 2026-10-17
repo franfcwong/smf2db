@@ -182,7 +182,7 @@ which included source archive file format and pre-built wheel format. Below, we'
 
 If you install ``smf2db`` on z/OS, it is required to install the pre-requisite packages before installing smf2db.
 
-Following the instructions below to install the pre-requistie packages:
+Following the instructions below to install the prerequisites packages:
 
 .. tab-set::
 
@@ -261,7 +261,7 @@ Following the instructions below to install the pre-requistie packages:
 
             pip install <some-package.whl>
 
-After installation of pre-requiste python packages, smf2db can be installed in one of the ways described
+After installation of prerequisites python packages, smf2db can be installed in one of the ways described
 below:
 
 .. _install-wheel:
@@ -275,7 +275,7 @@ Following the instructions below to install the smf2db in wheel format:
 
     .. tab-item:: z/OS
 
-        Upload the wheel files to z/OS and run the following comand
+        Upload the wheel files to z/OS and run the following command
 
         .. code-block:: console
 
@@ -321,11 +321,11 @@ Install source archive file downloaded from PyPI.
 
     .. tab-item:: z/OS
 
-        Upload the archive file to target virtual environment on z/OS and run the following comand
+        Upload the archive file to target virtual environment on z/OS and run the following command
 
         .. code-block:: console
 
-            python3 -m pip install install <smf2db-0.1.0.tar.gz>
+            python3 -m pip install <smf2db-0.1.3.tar.gz>
 
     .. tab-item:: Unix/macOS
 

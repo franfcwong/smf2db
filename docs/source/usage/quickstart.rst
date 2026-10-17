@@ -53,7 +53,7 @@ The ``-o <outfile>`` option outputs the report to a file *outfile*.
          70           1      CPU Activity
          ''           2      Cryptographic Hardware Activity
          71           1      Paging Activity
-         72           3      Workload Activty
+         72           3      Workload Activity
          ''           5      Serialization Delay
          73           1      Channel Path Activity
          74           1      Device Activity
@@ -72,7 +72,7 @@ The ``-o <outfile>`` option outputs the report to a file *outfile*.
          ''           3      I/O Queuing Activity
         110           1      CICS Performance Summary
          ''           2      CICS Statistics Summary
-        123           1      z/OS Connect EE Requeust Overview
+        123           1      z/OS Connect EE Request Overview
     ============ =========== ===================================
 
 .. seealso::
@@ -127,7 +127,7 @@ By running the following command on the terminal or by JCL on z/OS:
               -o <output file full path>
               /*
 
-        where *smf2db path* is the absoulte path where **smf2db** installed, say, /u/myuser/.venv/bin/smf2db and
+        where *smf2db path* is the absolute path where **smf2db** installed, say, /u/myuser/.venv/bin/smf2db and
         *json files full path* is the JSON files in which you want to print the report. The *lpar name* is the
         target lpar name of this report and finally, the *output file full path* is the full path of output report.
 
@@ -223,7 +223,7 @@ cover how to `install and use PostgreSQL <https://www.postgresql.org/docs/curren
 
 **smf2db** comes with a script called :program:`initcfg` that create a yaml file, say, :file:`config.yaml` in
 your preferred config directory, which you can configure all aspects of databases which will be used later for
-uploading to the database . The configuration values are set from a few queustions it asks you. Currently, only
+uploading to the database . The configuration values are set from a few questions it asks you. Currently, only
 three db drivers are supported: ``sqlite``, ``pg8000`` and ``psycopg2`` and it depends on whether it is supported
 on your platform. In addition, you can choose which partition scheme for your database according to
 your data volume: ``no partition``, ``weekday``, ``day of month`` and ``week number``. Here is how to run this:
@@ -258,7 +258,7 @@ your data volume: ``no partition``, ``weekday``, ``day of month`` and ``week num
               --db_prefix "<database name prefix>"
 
 where *config file path* is the target config file in full path or relative path with extension ``yaml`` and
-it will be overrided if exist.
+it will be overridden if exist.
 
 .. seealso::
 
@@ -324,7 +324,7 @@ Assuming that you have had some SMF JSON files, (if not, please following the in
 `CBTTape <https://cbttape.org/ftp/cbt/CBT1064.zip>`__ to get ready of some SMF JSON files,) and you have
 run the :ref:`Initializing database`, you can now upload the data to your chosen DBMS based on the :file:`config.yaml`.
 It is started with the :program:`upload` program which is an interactive script which will prompt you for user ID
-and password to connect to the database if you are using PostgreSQL and you does not provide it on the command like this:
+and password to connect to the database if you are using PostgresSQL and you does not provide it on the command like this:
 
 .. tab-set::
 
@@ -368,7 +368,7 @@ Usage Examples
 Upload smf 70
 """""""""""""
 
-By running the following command or submiting the JCL:
+By running the following command or submitting the JCL:
 
 .. tab-set::
 
@@ -407,7 +407,7 @@ each of the JSON file and the total number of records added to each of the table
 
 .. note::
 
-   smf70 data is the pre-requsite of smf30 and other smf7x data. If you prepare to upload these data to
+   smf70 data is the prerequisite of smf30 and other smf7x data. If you prepare to upload these data to
    database, you are required to upload smf70 data first.
 
 .. _Initializing sumup database:
@@ -471,7 +471,7 @@ Assuming that you have uploaded some SMF JSON files to database, (if not, please
 :ref:`Uploading data to DB` to get ready of the interval databases,) and you have run the :ref:`Initializing sumup database`
 to initialize the database, you can now sum up the database to a specified summary level. It is started with the
 :program:`sumup` program which is an interactive script and will prompt you for user ID and password to connect to
-the database if you are using PostgreSQL and does not provide it on the command like this:
+the database if you are using PostgresSQL and does not provide it on the command like this:
 
 .. tab-set::
 
@@ -479,7 +479,7 @@ the database if you are using PostgreSQL and does not provide it on the command 
 
         .. code-block:: console
 
-           smf2db db sumup <smf type> --summary_levl <summary level> --config_file <config file>
+           smf2db db sumup <smf type> --summary_level <summary level> --config_file <config file>
 
     .. tab-item:: JCL
 
@@ -498,7 +498,7 @@ the database if you are using PostgreSQL and does not provide it on the command 
               db
               sumup
               <smf type>
-              --summary_lvel <summary level>
+              --summary_level <summary level>
               --config_fle <config file path>
 
 where *smf type* is the ``SMF type`` (e.g. 30, 70, 123, etc), *summary level* is either 15-min, hourly or daily

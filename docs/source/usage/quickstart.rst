@@ -324,7 +324,7 @@ Assuming that you have had some SMF JSON files, (if not, please following the in
 `CBTTape <https://cbttape.org/ftp/cbt/CBT1064.zip>`__ to get ready of some SMF JSON files,) and you have
 run the :ref:`Initializing database`, you can now upload the data to your chosen DBMS based on the :file:`config.yaml`.
 It is started with the :program:`upload` program which is an interactive script which will prompt you for user ID
-and password to connect to the database if you are using PostgresSQL and you does not provide it on the command like this:
+and password to connect to the database if you are using PostgreSQL and you does not provide it on the command like this:
 
 .. tab-set::
 
@@ -471,7 +471,7 @@ Assuming that you have uploaded some SMF JSON files to database, (if not, please
 :ref:`Uploading data to DB` to get ready of the interval databases,) and you have run the :ref:`Initializing sumup database`
 to initialize the database, you can now sum up the database to a specified summary level. It is started with the
 :program:`sumup` program which is an interactive script and will prompt you for user ID and password to connect to
-the database if you are using PostgresSQL and does not provide it on the command like this:
+the database if you are using PostgreSQL and does not provide it on the command like this:
 
 .. tab-set::
 

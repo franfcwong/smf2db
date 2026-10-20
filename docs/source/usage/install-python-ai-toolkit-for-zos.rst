@@ -42,11 +42,10 @@ packages required by Smf2pgdb from IBM Python AI Toolkit are shown below.
   click
   numpy
   pandas
-  SQLALchemy
-  typing_extensions
-  python_dateutil
-  pytz
+  sqlalchemy
   packaging
+  jsonschema
+  pyyaml
 
 
 You can follow the advice in IBM website to create the requirements.txt as shown below

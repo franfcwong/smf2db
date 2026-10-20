@@ -96,7 +96,7 @@ This section describes the steps to follow before installing smf2db.
 
             .. code-block:: console
 
-                source myenv/bin/activate
+                source myvenv/bin/activate
 
         .. tab-item:: Unix/macOS
 
@@ -194,7 +194,7 @@ Following the instructions below to install the prerequisites packages:
             click
             numpy
             pandas
-            SQLALchemy
+            sqlalchemy
             packaging
             jsonschema
             pyyaml
@@ -206,7 +206,7 @@ Following the instructions below to install the prerequisites packages:
             rich >= 14.3.2
             tabulate == 0.9.0
 
-        Then, you run the following comand
+        Then, you run the following command
 
         .. code-block:: console
 
@@ -225,7 +225,7 @@ Following the instructions below to install the prerequisites packages:
             click >= 8.1.3
             numpy >= 1.23.4
             pandas >= 1.5.1
-            SQLALchemy >= 2.0.12
+            sqlalchemy >= 2.0.12
             packaging >= 25.0
             jsonschema >= 4.17.3
             pyyaml >= 6.0.3
@@ -247,7 +247,7 @@ Following the instructions below to install the prerequisites packages:
             click >= 8.1.3
             numpy >= 1.23.4
             pandas >= 1.5.1
-            SQLALchemy >= 2.0.12
+            sqlalchemy >= 2.0.12
             packaging >= 25.0
             jsonschema >= 4.17.3
             pyyaml >= 6.0.3

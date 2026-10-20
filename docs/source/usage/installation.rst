@@ -331,13 +331,13 @@ Install source archive file downloaded from PyPI.
 
         .. code-block:: bash
 
-            python3 -m pip install <smf2db-0.1.0.tar.gz>
+            python3 -m pip install <smf2db-0.1.3.tar.gz>
 
     .. tab-item:: Windows
 
         .. code-block:: bat
 
-            py -m pip install <smf2db-0.1.0.tar.gz>
+            py -m pip install <smf2db-0.1.3.tar.gz>
 
 
 
